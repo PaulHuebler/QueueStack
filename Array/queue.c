@@ -45,7 +45,7 @@ int enqueue(struct Queue* q, int element) {
         return INT_MIN;
     }
 
-    q->rear = (q->rear + 1) % q->max;
+    q->rear = (q->rear + 1) % q->max;                           //Circular Queue: Wenn ein Ende des Arrays erreicht wird, setzt am anderen Ende fort.
     q->array[q->rear] = element;
     q->size++;
 
@@ -61,7 +61,7 @@ int dequeue(struct Queue* q) {
     }
 
     int element = q->array[q->front];
-    q->front = (q->front + 1) % q->max;
+    q->front = (q->front + 1) % q->max;     //Circular Queue: Wenn ein Ende des Arrays erreicht wird, setzt am anderen Ende fort.
     q->size--;
 
     return element;
