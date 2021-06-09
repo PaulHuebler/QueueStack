@@ -1,35 +1,47 @@
-//Verwendung von Queue und Stack. (LL)
+//Verwendung von Queue und Stack. (Array)
 
 #include <stdio.h>
+#include <time.h>
 
 #include "stack.h"
 #include "queue.h"
 
 int main()
 {
-    struct SNode* root = NULL;
- 
-    push(&root, 1);
-    push(&root, 2);
-    push(&root, 3);
-
-    printf("Oberstes Element im Stack : %d\n", top(root));
+    struct SNode* stack = NULL;
     
-    push(&root, 4);
+    clock_t start_time1 = clock();
 
-    printf("Vom Stack entfernt: %d\n", pop(&root));
- 
+    for(int i = 0; i < 50000; i++) {
+
+        push(&stack, i);
+        push(&stack, i+1);
+        top(stack);
+        pop(&stack);
+        pop(&stack);
+    }
+
+    double elapsed_time1 = (double)(clock() - start_time1) / CLOCKS_PER_SEC;
+
     printf("---------------------------------\n");
+
+    struct Queue* queue = createQueue();
+    
+    clock_t start_time2 = clock();
+    
+    for(int i = 0; i < 50000; i++) {
+
+        enqueue(queue, i);
+        enqueue(queue, i+1);
+        front(queue);
+        dequeue(queue);
+        dequeue(queue);
+    }
+    
+    double elapsed_time2 = (double)(clock() - start_time2) / CLOCKS_PER_SEC;
+
+    printf("Stack hat %f Sekunden gebraucht.\n", elapsed_time1);
+    printf("Queue hat %f Sekunden gebraucht.\n", elapsed_time2);
  
-    struct Queue* q = createQueue();
-    enqueue(q, 1);
-    enqueue(q, 2);
-    enqueue(q, 3);
-
-    printf("Vorderes Element in der Queue: %d\n", front(q));
-    printf("Hinteres Element in der Queue: %d\n", rear(q));
-
-    printf("Aus Queue entfernt: %d\n", dequeue(q));
-
     return 0;
 }
