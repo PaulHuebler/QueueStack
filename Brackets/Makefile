@@ -3,8 +3,8 @@ CFLAGS = -c -Wextra -O3
 LD = $(CC)
 LDFLAGS =
 
-TARGET = test
-OBJECTS = test.o stack.o
+TARGET = brackets
+OBJECTS = brackets.o stack.o
 
 all: $(TARGET)
 
