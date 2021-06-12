@@ -16,8 +16,8 @@ struct Stack {
 struct Stack* createStack(unsigned int max) {
 
     struct Stack* s = (struct Stack*)malloc(sizeof(struct Stack));
-    s->array = (int*)malloc(s->max * sizeof(int));                  //Reservieren der Memory
     s->max = max;
+    s->array = (int*)malloc(s->max * sizeof(int));                  //Reservieren der Memory
     s->top = -1;
 
     return s;

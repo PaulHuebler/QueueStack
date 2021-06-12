@@ -16,8 +16,8 @@ struct Queue {
 struct Queue* createQueue(unsigned int max) {
 
     struct Queue* q = (struct Queue*)malloc(sizeof(struct Queue));
-    q->array = (int*)malloc(q->max * sizeof(int));                  //Reservieren der Memory
     q->max = max;
+    q->array = (int*)malloc(q->max * sizeof(int));                  //Reservieren der Memory
     q->size = 0;
     q->front = 0;
     q->rear = max - 1;                                              //Das Ende der Queue ist das Element mit dem höchsten Index
